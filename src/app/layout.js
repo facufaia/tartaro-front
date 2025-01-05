@@ -8,6 +8,7 @@ import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/toaster";
 
 import StickyNotifications from "@/components/modals/StickyNotifications";
+// import { getSettings } from "@/lib/api";
 
 import "./globals.css";
 
@@ -28,7 +29,10 @@ export const metadata = {
     "Discover premium clothing and accessories at Tartaro. Shop our curated collection of modern fashion essentials, featuring high-quality materials and timeless designs.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  // const logourl = await getSettings();
+  // console.log("logourl", logourl);
+
   return (
     <html lang="en">
       <body

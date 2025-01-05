@@ -44,16 +44,14 @@ export default async function About() {
   return (
     <main className="min-h-[90svh]">
       <AboutHero title={hero_title} description={hero_description} />
-      <div>
+      <div className="px-8 md:px-16">
         <StoryValues data={storyValuesData} />
         <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">
-                {contact_form_title}
-              </h2>
-              <ContactForm />
-            </div>
+          <div className="max-w-xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              {contact_form_title}
+            </h2>
+            <ContactForm />
           </div>
         </section>
       </div>

@@ -1,5 +1,4 @@
-const STRAPI_TOKEN = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+import { STRAPI_URL, STRAPI_TOKEN } from "@/lib/constants";
 
 if (!STRAPI_URL || !STRAPI_TOKEN) {
   throw new Error("Missing Strapi environment variables");
@@ -26,3 +25,10 @@ export async function query(url) {
     throw error;
   }
 }
+
+// export async function getSiteSettings() {
+//   const res = await fetch(`${STRAPI_URL}/api/site-setting?populate=logo`);
+//   const data = await res.json();
+//   console.log(data);
+//   return "s";
+// }

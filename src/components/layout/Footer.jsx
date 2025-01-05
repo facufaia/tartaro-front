@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-background/80 backdrop-blur-sm text-white p-8">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
+    <footer className="bg-background/80 backdrop-blur-sm text-white p-8 md:px-12">
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
         {/* Logo & Description */}
         <div className="space-y-4">
           <Link href="/" className="inline-block">

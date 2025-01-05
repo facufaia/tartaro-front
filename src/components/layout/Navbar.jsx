@@ -57,8 +57,8 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="bg-background/80 fixed z-20 backdrop-blur-sm w-full">
-      <div className="container mx-auto flex justify-between items-center py-4">
+    <nav className="bg-background/80 fixed z-20 backdrop-blur-sm w-full mx-auto">
+      <div className="mx-auto flex justify-between items-center py-4 px-7 md:px-12">
         <Link href="/" className="text-white text-lg font-bold animate-fade-in">
           <img alt="Tartaro Logo" src="/logo.svg" className="h-8" />
         </Link>

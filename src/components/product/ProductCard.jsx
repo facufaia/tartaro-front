@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/tooltip";
 import Link from "next/link";
 
+const STRAPI_API = process.env.NEXT_PUBLIC_STRAPI_URL;
+
 export default function ProductCard({ product }) {
   const router = useRouter();
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
@@ -55,7 +57,7 @@ export default function ProductCard({ product }) {
             {product.images.map(({ url }, index) => (
               <CarouselItem key={url}>
                 <img
-                  src={`http://localhost:1337${url}`}
+                  src={`${STRAPI_API}${url}`}
                   alt={`${product.name} `}
                   className="w-full h-[250px] object-cover rounded-t-lg"
                 />

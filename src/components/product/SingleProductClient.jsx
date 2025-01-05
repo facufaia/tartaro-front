@@ -11,7 +11,7 @@ import { capitalizeFirstLetter } from "@/lib/helpers";
 export default function SingleProductClient({ product }) {
   const addToCart = useCartStore((state) => state.addToCart);
   const [selectedColor, setSelectedColor] = useState(product?.colors[0]);
-  const [selectedSize, setSelectedSize] = useState("M");
+  const [selectedSize, setSelectedSize] = useState("m");
   const [api, setApi] = useState(null);
   const { toast } = useToast();
 

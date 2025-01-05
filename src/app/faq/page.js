@@ -37,7 +37,7 @@ export default async function FAQ() {
   };
 
   return (
-    <main className="container mx-auto py-24 min-h-[90svh]">
+    <main className="mx-auto py-24 min-h-[90svh] px-8 md:px-16">
       <h1 className="mb-4 text-5xl font-bold text-pretty animate-fade-in-right">
         {title}
       </h1>

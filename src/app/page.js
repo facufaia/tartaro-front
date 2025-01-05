@@ -2,7 +2,6 @@ import FeaturedCarousel from "@/components/product/FeaturedCarousel";
 import HomeHero from "@/components/content/HomeHero";
 import Categories from "@/components/content/Categories";
 import { fetchSingle, fetchProducts } from "@/lib/api";
-//fetchProducts
 
 export default async function Home() {
   const { data } = await fetchSingle("home");

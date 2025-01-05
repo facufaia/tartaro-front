@@ -38,7 +38,7 @@ export default function NewsLetter({ setShowNewsletter }) {
   };
 
   return (
-    <div className="bg-card p-4 rounded-lg shadow-lg border animate-fade-in-right w-[340px]">
+    <div className="bg-card p-4 rounded-lg shadow-lg border animate-fade-in-right max-w-[90svw] sm:max-w-[340px] sm:min-w-[320px]">
       <div className="flex justify-between items-start mb-2">
         <h3 className="font-semibold">Subscribe to Newsletter</h3>
         <button onClick={() => setShowNewsletter(false)}>

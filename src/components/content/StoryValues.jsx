@@ -5,7 +5,7 @@ export default async function StoryValues({ data }) {
 
   return (
     <section className="py-20 min-h-[100svh] flex flex-col justify-center">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Story Side */}
           <div className="text-foreground flex flex-col justify-between h-full">

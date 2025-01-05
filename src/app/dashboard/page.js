@@ -5,7 +5,7 @@ import Orders from "@/components/dashboard/Orders";
 
 export default function Dashboard() {
   return (
-    <div className="container mx-auto py-8 min-h-[90svh]">
+    <div className="mx-auto p-8 md:p-16 min-h-[90svh]">
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
       <Tabs defaultValue="orders" className="space-y-6">
         <TabsList>

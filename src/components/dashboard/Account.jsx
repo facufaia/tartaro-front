@@ -1,29 +1,31 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { User, MapPin, Lock } from "lucide-react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 export default function Account() {
-  // const [userData, setUserData] = useState({
-  //   name: "John Doe",
-  //   email: "john@example.com",
-  //   phone: "+1234567890",
-  //   addresses: [
-  //     {
-  //       id: 1,
-  //       street: "123 Main St",
-  //       city: "New York",
-  //       state: "NY",
-  //       zip: "10001",
-  //       isDefault: true,
-  //     },
-  //   ],
-  // });
+  const [showAddressModal, setShowAddressModal] = useState(false);
   const { data: user } = useSession();
+  const [addresses, setAddresses] = useState(user?.user?.addresses || []);
+
   const { toast } = useToast();
+
+  const handleAddAddress = async (data) => {
+    // TODO: API call to save address
+    setShowAddressModal(false);
+    setAddresses([...addresses, data]);
+  };
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
@@ -35,7 +37,7 @@ export default function Account() {
   };
 
   return (
-    <div className="container mx-auto py-8 min-h-[90svh]">
+    <div className="mx-auto py-8 min-h-[90svh]">
       <h1 className="text-2xl font-bold mb-6">Account Settings</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -48,7 +50,7 @@ export default function Account() {
             </CardTitle>
           </CardHeader>
           <CardContent className="px-0">
-            <form onSubmit={handleUpdateProfile} className="space-y-4">
+            <form onSubmit={handleUpdateProfile} className="space-y-4 max-w-md">
               <div>
                 <label className="text-sm font-medium">Name</label>
                 <Input
@@ -71,7 +73,7 @@ export default function Account() {
           </CardContent>
         </Card>
 
-        {/* Shipping Addresses
+        {/* Shipping Addresses */}
         <div>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -80,7 +82,7 @@ export default function Account() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {userData?.addresses?.map((address) => (
+            {addresses?.map((address) => (
               <div
                 key={address.id}
                 className="p-4 border rounded-lg mb-4 last:mb-0"
@@ -102,14 +104,29 @@ export default function Account() {
                 </p>
               </div>
             ))}
-            <Button className="w-full mt-4" variant="outline">
+            <Button
+              className="w-full mt-4"
+              variant="outline"
+              onClick={() => setShowAddressModal(true)}
+            >
               Add New Address
             </Button>
+            <Dialog open={showAddressModal} onOpenChange={setShowAddressModal}>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Add New Address</DialogTitle>
+                </DialogHeader>
+                <AddressForm
+                  onSSS={handleAddAddress}
+                  onCancel={() => setShowAddressModal(false)}
+                />
+              </DialogContent>
+            </Dialog>
           </CardContent>
-        </div> */}
+        </div>
 
         {/* Password Change */}
-        <Card className="lg:col-span-2 border-none">
+        <Card className="lg:col-span-2 border-none max-w-md">
           <CardHeader className="px-0">
             <CardTitle className="flex items-center gap-2">
               <Lock className="h-5 w-5" />
@@ -140,5 +157,59 @@ export default function Account() {
         </Card>
       </div>
     </div>
+  );
+}
+
+// import { Button } from "@/components/ui/button"
+// import { Input } from "@/components/ui/input"
+import { useForm } from "react-hook-form";
+// import { useToast } from "@/components/ui/use-toast"
+// import { useState } from "react";
+
+export function AddressForm({ onSSS, onCancel }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm();
+  const { toast } = useToast();
+
+  const handleFormSubmit = async (data) => {
+    try {
+      toast({
+        title: "Address saved",
+        description: "Your new shipping address has been added successfully",
+        duration: 3000,
+      });
+      onSSS(data);
+      onCancel();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save address. Please try again.",
+        variant: "destructive",
+        duration: 3000,
+      });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
+      <Input
+        {...register("street", { required: true })}
+        placeholder="Street Address"
+      />
+      <Input {...register("city", { required: true })} placeholder="City" />
+      <Input {...register("state", { required: true })} placeholder="State" />
+      <Input {...register("zip", { required: true })} placeholder="ZIP Code" />
+      <div className="flex gap-2">
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Saving..." : "Save Address"}
+        </Button>
+        <Button type="button" variant="outline" onClick={onCancel}>
+          Cancel
+        </Button>
+      </div>
+    </form>
   );
 }

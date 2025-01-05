@@ -1,7 +1,6 @@
 import { query } from "@/lib/strapi";
 import qs from "qs";
 
-// Collection types
 export const fetchCollection = async (collection, params = {}) => {
   const { filters, pagination, sort, populate = "*" } = params;
 
@@ -52,3 +51,11 @@ export const fetchProducts = async (searchParams = {}) => {
 
   return fetchCollection("products", queryObject);
 };
+
+// import { getSiteSettings } from "@/lib/strapi";
+// export async function getSettings() {
+//   const settings = await getSiteSettings();
+//   return {
+//     logo: "settings.logo.data.attributes.url",
+//   };
+// }

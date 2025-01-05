@@ -5,10 +5,9 @@ import { useToast } from "@/hooks/use-toast";
 import { useCartStore } from "@/stores/useCart";
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
+import { capitalizeFirstLetter } from "@/lib/helpers";
 
-const capitalizeFirstLetter = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-};
+const STRAPI_API = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 export default function CartItems() {
   const removeFromCart = useCartStore((state) => state.removeFromCart);
@@ -33,7 +32,7 @@ export default function CartItems() {
           Your cart is empty
         </h3>
         <p className="text-muted-foreground hidden md:block md:text-center">
-          Looks like you haven't added anything yet
+          Looks like you haven&apos;t added anything yet
         </p>
         <Link href="/products">
           <Button variant="default" className="mt-4">
@@ -51,8 +50,9 @@ export default function CartItems() {
           key={`${item.id}-${item.color}-${item.size}`}
           className="flex gap-4 md:gap-6 items-center rounded-lg"
         >
+          {console.log(item)}
           <img
-            src={item.image}
+            src={`${STRAPI_API}${item.image.url}`}
             alt={item.name}
             className="w-36 h-36 md:w-24 md:h-24 object-cover rounded-md"
           />

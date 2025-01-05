@@ -64,7 +64,7 @@ export default function Cookies({ setShowCookies }) {
   };
 
   return (
-    <div className="bg-card p-6 rounded-lg shadow-lg border w-[448px] animate-fade-in-right">
+    <div className="bg-card p-6 rounded-lg shadow-lg border max-w-[90svw] animate-fade-in-right sm:w-[520px]">
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-lg font-semibold">Cookie Settings</h3>
         <button onClick={() => setShowCookies(false)}>
@@ -126,7 +126,7 @@ export default function Cookies({ setShowCookies }) {
         </div>
 
         <p className="text-xs text-muted-foreground">
-          By clicking "Accept All", you agree to our{" "}
+          By clicking &quot;Accept All&quot;, you agree to our{" "}
           <Link href="/privacy-policy" className="underline hover:text-primary">
             Privacy Policy
           </Link>
