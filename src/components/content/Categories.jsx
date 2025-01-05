@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { fetchCollection } from "@/lib/api";
+import { STRAPI_URL } from "@/lib/constants";
 
 export default async function Categories() {
   const { data } = await fetchCollection("categories");
@@ -19,7 +20,7 @@ export default async function Categories() {
               <div className="cursor-pointer group">
                 <div className="relative rounded-lg overflow-hidden hover:scale-110 hover:-translate-y-5 transition-transform duration-300 ease-in-out">
                   <img
-                    src={`http://localhost:1337${category.image.url}`}
+                    src={`${STRAPI_URL}${category.image.url}`}
                     alt={category.name}
                     className="rounded-lg min-w-[65svw] sm:min-w-[30svw] md:min-w-[20svw] h-[300px] object-cover group-hover:shadow-primary shadow-md transition-shadow duration-300 ease-in-out"
                   />

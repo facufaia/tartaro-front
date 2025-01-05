@@ -12,8 +12,7 @@ export default async function HomeHero() {
       <div
         className="flex-1 bg-cover bg-center min-h-[50svh] md:min-h-svh relative"
         style={{
-          backgroundImage:
-            "url('https://media.voguebusiness.com/photos/6266c358dec19cbf7b6e29a4/2:3/w_2560%2Cc_limit/unknown-voguebus-unknown-apr-22-story.jpg')",
+          backgroundImage: "url('hero_1.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r to-background/70 from-primary/50" />
@@ -23,8 +22,7 @@ export default async function HomeHero() {
       <div
         className="flex-1 bg-cover bg-center min-h-[50svh] md:min-h-svh relative"
         style={{
-          backgroundImage:
-            "url('https://pauseonline.s3.amazonaws.com/wp-content/uploads/2017/03/image5JPG.jpg')",
+          backgroundImage: "url('hero_2.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-l to-background/70 from-primary/50" />

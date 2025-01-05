@@ -18,7 +18,7 @@ export default function AboutHero({ title, description }) {
             <div className="relative rounded-xl border bg-card shadow-md transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(15deg)] group-hover:shadow-primary group-hover:shadow-lg group-hover:border-primary">
               <div className="overflow-hidden h-[270px] md:h-[350px] rounded-xl">
                 <img
-                  src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fwp-content%2Fblogs.dir%2F6%2Ffiles%2F2024%2F05%2F15%2Fspanishbrands0-1.jpg"
+                  src="/about.png"
                   alt="About Us hero image"
                   className="h-[350px] w-full object-cover   transition-transform duration-500 scale-125 group-hover:scale-100"
                 />
