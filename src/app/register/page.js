@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,10 +17,10 @@ import { useToast } from "@/hooks/use-toast";
 import { signIn } from "next-auth/react";
 import { Google } from "@/components/ui/googleIcon";
 import { Facebook } from "@/components/ui/facebookIcon";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 

@@ -3,6 +3,8 @@ import AboutHero from "@/components/content/AboutHero";
 import StoryValues from "@/components/content/StoryValues";
 import { fetchCollection } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
+
 export default async function About() {
   const { data } = await fetchCollection("about");
   const { hero_title, hero_description, contact_form_title } = data;
@@ -41,6 +43,7 @@ export default async function About() {
       ],
     },
   };
+
   return (
     <main className="min-h-[90svh]">
       <AboutHero title={hero_title} description={hero_description} />

@@ -1,6 +1,8 @@
 import { fetchCollection } from "@/lib/api";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
+export const dynamic = "force-dynamic";
+
 export default async function PrivacyPolicy() {
   const { data } = await fetchCollection("privacy-policy");
   const { title, paragraph } = data;

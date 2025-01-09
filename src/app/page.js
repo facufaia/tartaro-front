@@ -3,6 +3,8 @@ import HomeHero from "@/components/content/HomeHero";
 import Categories from "@/components/content/Categories";
 import { fetchSingle, fetchProducts } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const { data } = await fetchSingle("home");
   const { categories_title, product_title } = data;

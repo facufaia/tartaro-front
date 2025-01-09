@@ -3,6 +3,8 @@ import ShippingInfo from "@/components/content/ShippingInfo";
 import ContactForm from "@/components/forms/ContactForm";
 import { fetchCollection } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
+
 export default async function FAQ() {
   const { data } = await fetchCollection("faq");
   const {
