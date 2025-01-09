@@ -10,7 +10,6 @@ export async function query(url) {
       headers: {
         Authorization: `Bearer ${STRAPI_TOKEN}`,
       },
-      cache: "no-store",
     });
 
     if (!res.ok) {

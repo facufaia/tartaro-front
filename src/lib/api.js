@@ -12,8 +12,6 @@ export const fetchCollection = async (collection, params = {}) => {
   };
 
   const queryString = qs.stringify(queryObject, { encodeValuesOnly: true });
-  console.log(`LLAMADO A LA API 
-  STRING: ${collection}?${queryString}`);
 
   return query(`${collection}?${queryString}`);
 };
