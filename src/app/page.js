@@ -2,11 +2,17 @@ import FeaturedCarousel from "@/components/product/FeaturedCarousel";
 import HomeHero from "@/components/content/HomeHero";
 import Categories from "@/components/content/Categories";
 import { fetchSingle, fetchProducts } from "@/lib/api";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const { data } = await fetchSingle("home");
+
+  if (!data) {
+    notFound();
+  }
+
   const { categories_title, product_title } = data;
   const res = await fetchProducts("products", {
     filters: { featured: true },

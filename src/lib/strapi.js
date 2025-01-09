@@ -10,6 +10,7 @@ export async function query(url) {
       headers: {
         Authorization: `Bearer ${STRAPI_TOKEN}`,
       },
+      next: { revalidate: 3600 },
     });
 
     if (!res.ok) {

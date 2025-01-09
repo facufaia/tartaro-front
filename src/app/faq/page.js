@@ -2,11 +2,17 @@ import FAQItems from "@/components/content/FAQItems";
 import ShippingInfo from "@/components/content/ShippingInfo";
 import ContactForm from "@/components/forms/ContactForm";
 import { fetchCollection } from "@/lib/api";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 export default async function FAQ() {
   const { data } = await fetchCollection("faq");
+
+  if (!data) {
+    notFound();
+  }
+
   const {
     title,
     contact_form_title,
