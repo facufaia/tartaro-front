@@ -137,7 +137,7 @@ export default function Login() {
                 variant="outline"
                 disabled={isLoading}
                 className="hover:border-primary duration-300 ease-in-out transition-colors"
-                onClick={() => signIn("google", { callbackUrl: "/products" })}
+                onClick={() => signIn("google")}
               >
                 <Google className="mr-2 h-4 w-4" />
                 Google
